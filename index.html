@@ -145,6 +145,97 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/14/Java%E4%B9%A0%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hongyu Li">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BlogX">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/14/Java%E4%B9%A0%E9%A2%98/" class="post-title-link" itemprop="url">Java习题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-04-14 22:46:35 / Modified: 23:44:36" itemprop="dateCreated datePublished" datetime="2021-04-14T22:46:35+08:00">2021-04-14</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>输入流将数据从文件，标准输入或其他外部设备只能够加载到内存，在java中其对应于抽象类 java.io.InputStream及其子类</li>
+</ul>
+<p>java.io.InputStream : 此抽象类是表示字节输入流的所有类的超类</p>
+<p>java.io.OutputStream : 此抽象类是表示字节输出流的所有类的超类</p>
+<ul>
+<li>main方法时Java Application程序执行入口点，合法的描述是：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>如下程序段：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThead</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		MyThead t=<span class="keyword">new</span> MyThead();</span><br><span class="line">		MyThead s=<span class="keyword">new</span> MyThead();</span><br><span class="line">		t.start();</span><br><span class="line">		System.out.println(<span class="string">&quot;one.&quot;</span>);</span><br><span class="line">		s.start();</span><br><span class="line">		System.out.println(<span class="string">&quot;two.&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;Thread&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>start()是开启线程，等待获得时间片，一到获得时间片就执行。所以可能一开启就获得了时间片执行，也有可能等到two输出后才获得了时间片。</p>
+<p>在java当中，线程通常有运行五种状态，创建、就绪、运行、阻塞和死亡</p>
+<p>下列那些方法是线程安全的(所调用的方法都存在)</p>
+<p>这几个类都没有类属性，不存在共享资源，为满足题目的意思，应是多线程情况喜爱使用同一个对i啊选哪个，以达到使成员共享资源的目的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyServlet</span> <span class="keyword">implements</span> <span class="title">Servlet</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span> <span class="params">(ServletRequest req, ServletResponse resp)</span> </span>&#123;</span><br><span class="line">BigInteger I = extractFromRequest(req);</span><br><span class="line">encodeIntoResponse(resp,factors);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此选项中，没有成员（没有共享资源），线程安全。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyServlet</span> <span class="keyword">implements</span> <span class="title">Servlet</span> </span>&#123;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">long</span> count =<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span> <span class="params">(ServletRequest req, ServletResponse resp)</span> </span>&#123;</span><br><span class="line">BigInteger I = extractFromRequest(req);</span><br><span class="line">BigInteger[] factors = factor(i);</span><br><span class="line">count ++;</span><br><span class="line">encodeIntoResponse(resp,factors);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此选项中，假设存在线程1和线程2，count初始值为0，当线程1执行count++中count+1（此时未写回最终计算值），这时线程2执行count++中读取count，发生数据错误，导致线程1线程2的结果都为1，而不是线程1的结果为1，线程2的结果为2，线程不安全；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> value;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">set</span> <span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.value = value;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此选项中成员私有，对成员的set get方法都加重量级锁，线程安全；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Factorizer</span> <span class="keyword">implements</span> <span class="title">Servlet</span> </span>&#123;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> MyCache cache = <span class="keyword">new</span> MyCache(<span class="keyword">null</span>,<span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest req, ServletResponse resp)</span> </span>&#123;</span><br><span class="line">BigInteger i = extractFromRequest(req);</span><br><span class="line">BigInteger[] factors = cache.getFactors(i);</span><br><span class="line"><span class="keyword">if</span> (factors == <span class="keyword">null</span>) &#123;</span><br><span class="line">factors = factor(i);</span><br><span class="line">cache = <span class="keyword">new</span> MyCache(i,factors);</span><br><span class="line">&#125;</span><br><span class="line">encodeIntoResponse(resp,factors);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此选项中链接：volatile有两个作用：可见性（volatile变量的改变能使其他线程立即可见，但它不是线程安全的，参考B）和禁止重排序；这里是可见性的应用，类中方法对volatile修饰的变量只有赋值，线程安全；</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/08/%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -538,7 +629,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
